@@ -53,7 +53,7 @@
             cursor: pointer;
         }
 
-        /* CARD STYLE - Color Coding */
+        /* CARD STYLE - Color Coding for Screen 4 */
         .obnl-card {
             border-width: 2px;
             border-style: solid;
@@ -66,7 +66,7 @@
             align-items: center;
         }
 
-        /* HOUSE COLORS */
+        /* COULEURS DES MAISONS */
         .card-racines { background-color: #f0fdf4; border-color: #bbf7d0; }
         .card-phenix { background-color: #fffaf2; border-color: #fed7aa; }
         .card-gardiens { background-color: #eff6ff; border-color: #bfdbfe; }
@@ -111,8 +111,7 @@
             position: absolute;
             width: 100%;
             top: 5%;
-            z-index: 10;
-            box-shadow: 0 0 20px #00ff41, 0 0 40px rgba(0, 255, 65, 0.5);
+            box-shadow: 0 0 20px #00ff41;
             animation: scanMove 2.5s ease-in-out infinite alternate;
         }
 
@@ -223,7 +222,7 @@
 
     <!-- ÉCRAN 1 — Accueil -->
     <div id="screen-accueil" class="screen active p-8 text-slate-900">
-        <div class="flex-grow flex flex-col justify-center text-center text-slate-900">
+        <div class="flex-grow flex flex-col justify-center text-center">
             <div class="mb-10 text-slate-900">
                 <div class="text-2xl font-black uppercase tracking-[0.3em] mb-1">Projet</div>
                 <h1 class="text-6xl font-black mb-4 tracking-tighter leading-none">ANODOS</h1>
@@ -231,27 +230,30 @@
             </div>
             <p class="text-slate-500 mb-12 px-4 text-balance">Scannez le QR d’un produit à ImpAct pour choisir une association de votre communauté.</p>
             <div class="space-y-4 px-2">
-                <div id="btn-scan-trigger" onclick="navigateTo('screen-camera')" class="btn-primary flex items-center justify-center gap-2 shadow-lg shadow-green-100 font-bold text-white text-white">
+                <div id="btn-scan-trigger" onclick="navigateTo('screen-camera')" class="btn-primary flex items-center justify-center gap-2 shadow-lg shadow-green-100 font-bold text-white">
                     <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v.01"/></svg>
                     Scanner un QR
                 </div>
-                <div onclick="navigateTo('screen-dashboard')" class="bg-slate-100 text-slate-600 p-4 rounded-xl font-bold cursor-pointer hover:bg-slate-200 transition-colors">Voir mon tableau de bord</div>
+                <div onclick="navigateTo('screen-dashboard')" class="bg-slate-100 text-slate-600 p-4 rounded-xl font-bold cursor-pointer hover:bg-slate-200 transition-colors text-slate-600">Voir mon tableau de bord</div>
             </div>
         </div>
-        <footer class="text-center text-xs text-slate-400 mt-8 pb-4 italic">Aucune inscription obligatoire.</footer>
+        <!-- TEXTE DE PARTENARIAT RETIRÉ ICI -->
+        <footer class="text-center text-[10px] text-slate-400 mt-8 pb-4">
+            <p class="italic mb-2 font-bold">Aucune inscription obligatoire.</p>
+        </footer>
     </div>
 
-    <!-- ÉCRAN 2 — Caméra -->
-    <div id="screen-camera" class="screen p-8 text-slate-900 text-center text-slate-900 text-slate-900">
+    <!-- ÉCRAN 2 — Caméra (PLUS TARD VISIBLE) -->
+    <div id="screen-camera" class="screen p-8 text-center text-slate-900">
         <div class="flex-grow flex flex-col justify-center items-center">
             <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
             </div>
-            <h2 class="text-2xl font-bold mb-4 text-slate-900">Activer la caméra</h2>
+            <h2 class="text-2xl font-bold mb-4">Activer la caméra</h2>
             <p class="text-slate-500 mb-10 text-balance leading-relaxed">Anodos a besoin d'accéder à votre caméra pour identifier le code QR.</p>
-            <div class="space-y-4 w-full px-4 text-white text-white">
-                <div id="btn-auth-trigger" onclick="navigateTo('screen-scanner')" class="btn-primary w-full shadow-lg shadow-green-100 font-bold text-white">AUTORISER</div>
-                <div onclick="navigateTo('screen-accueil')" class="btn-secondary w-full text-slate-600 font-bold text-slate-600">Plus tard</div>
+            <div class="space-y-4 w-full px-4 text-white">
+                <div id="btn-auth-trigger" onclick="navigateTo('screen-scanner')" class="btn-primary w-full shadow-lg shadow-green-100 font-bold">AUTORISER</div>
+                <div onclick="navigateTo('screen-accueil')" class="bg-slate-100 text-slate-500 py-4 rounded-2xl font-bold uppercase tracking-widest text-xs cursor-pointer hover:bg-slate-200 transition-colors">Plus tard</div>
             </div>
         </div>
         <footer class="text-[10px] text-slate-400 pb-8 font-medium italic text-center">Vous restez libre à chaque étape.</footer>
@@ -261,17 +263,17 @@
     <div id="screen-scanner" class="screen bg-black">
         <div class="scanner-container">
             <div class="absolute top-16 text-center w-full px-10 text-white">
-                <h3 class="text-white text-xl font-bold tracking-tight">Scannez le produit</h3>
+                <h3 class="text-xl font-bold tracking-tight">Scannez le produit</h3>
             </div>
             <div class="scanner-viewfinder">
-                <div class="scanner-corner corner-tl text-white"></div><div class="scanner-corner corner-tr text-white text-white text-white"></div><div class="scanner-corner corner-bl text-white text-white text-white"></div><div class="scanner-corner corner-br text-white text-white text-white text-white text-white text-white"></div>
+                <div class="scanner-corner corner-tl"></div><div class="scanner-corner corner-tr"></div><div class="scanner-corner corner-bl"></div><div class="scanner-corner corner-br"></div>
                 <div class="scan-laser"></div>
                 <div class="scan-trail"></div>
                 <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent"></div>
             </div>
             <div class="absolute bottom-12 w-full px-8 text-center text-white">
-                <p id="scan-status" class="text-white text-sm font-medium uppercase tracking-widest mb-6 text-white text-white">Placez le code QR dans le cadre</p>
-                <div id="btn-simulate-trigger" onclick="simulateScan()" class="w-full bg-white text-slate-900 font-black py-4 rounded-2xl shadow-2xl cursor-pointer uppercase tracking-widest text-sm hover:scale-[1.02] transition-transform text-slate-900 text-slate-900">
+                <p id="scan-status" class="text-sm font-medium uppercase tracking-widest mb-6">Placez le code QR dans le cadre</p>
+                <div id="btn-simulate-trigger" onclick="simulateScan()" class="w-full bg-white text-slate-900 font-black py-4 rounded-2xl shadow-2xl cursor-pointer uppercase tracking-widest text-sm hover:scale-[1.02] transition-transform">
                     SIMULER LE SCAN
                 </div>
             </div>
@@ -280,47 +282,47 @@
 
     <!-- ÉCRAN 4 — Choix -->
     <div id="screen-obnl" class="screen p-6 text-slate-900">
-        <header class="mb-8 pt-4 px-2 text-center text-slate-900 text-slate-900">
-            <h2 class="text-[17px] font-bold leading-tight mb-2 whitespace-nowrap overflow-hidden text-slate-900">Choisissez et envoyez</h2>
-            <div class="w-full flex justify-center text-slate-900 text-slate-900">
+        <header class="mb-8 pt-4 px-2 text-center text-slate-900">
+            <h2 class="text-[17px] font-bold leading-tight mb-2 whitespace-nowrap overflow-hidden">Choisissez et envoyez</h2>
+            <div class="w-full flex justify-center">
                 <div id="impact-flash-container" class="impact-pulse text-4xl">-- ImpAct</div>
             </div>
         </header>
 
-        <div id="obnl-list" class="flex-grow overflow-y-auto space-y-4 pr-1 pb-4 text-slate-900">
-            <div id="obnl-0" onclick="selectOBNL('Moisson Rimouski-Neigette', 'Racines')" class="obnl-card card-racines shadow-sm text-slate-900">
+        <div id="obnl-list" class="flex-grow overflow-y-auto space-y-4 pr-1 pb-4">
+            <div id="obnl-0" onclick="selectOBNL('Moisson Rimouski-Neigette', 'Racines')" class="obnl-card card-racines shadow-sm">
                 <div class="flex justify-between items-center w-full">
-                    <div class="flex-grow pr-4 text-slate-900 text-slate-900 text-slate-900"><h4 class="font-bold">Moisson Rimouski-Neigette</h4><p class="text-[10px] text-emerald-700 uppercase font-black tracking-widest">Maison des Racines</p></div>
+                    <div class="flex-grow pr-4 text-slate-900"><h4 class="font-bold">Moisson Rimouski-Neigette</h4><p class="text-[10px] text-emerald-700 uppercase font-black tracking-widest">Maison des Racines</p></div>
                     <svg class="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
                 </div>
             </div>
             <div id="obnl-1" onclick="selectOBNL('Action climat Rimouski', 'Phénix')" class="obnl-card card-phenix shadow-sm text-slate-900">
-                <div class="flex justify-between items-center w-full text-slate-900">
-                    <div class="flex-grow pr-4 text-slate-900"><h4 class="font-bold">Action climat Rimouski</h4><p class="text-[10px] text-orange-600 uppercase font-black tracking-widest text-orange-600">Maison des Phénix</p></div>
+                <div class="flex justify-between items-center w-full">
+                    <div class="flex-grow pr-4 text-slate-900"><h4 class="font-bold text-slate-900">Action climat Rimouski</h4><p class="text-[10px] text-orange-600 uppercase font-black tracking-widest text-orange-600">Maison des Phénix</p></div>
                     <svg class="w-5 h-5 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
                 </div>
             </div>
             <div id="obnl-2" onclick="selectOBNL('Centre des femmes de Rimouski', 'Gardiens')" class="obnl-card card-gardiens shadow-sm text-slate-900">
                 <div class="flex justify-between items-center w-full text-slate-900">
-                    <div class="flex-grow pr-4 text-slate-900 text-slate-900"><h4 class="font-bold">Centre des femmes de Rimouski</h4><p class="text-[10px] text-blue-600 uppercase font-black tracking-widest text-blue-600">Maison des Gardiens</p></div>
+                    <div class="flex-grow pr-4 text-slate-900"><h4 class="font-bold text-slate-900">Centre des femmes de Rimouski</h4><p class="text-[10px] text-blue-600 uppercase font-black tracking-widest text-blue-600">Maison des Gardiens</p></div>
                     <svg class="w-5 h-5 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
                 </div>
             </div>
             <div id="obnl-3" onclick="selectOBNL('Accueil et intégration BSL', 'Tisseurs')" class="obnl-card card-tisseurs shadow-sm text-slate-900">
-                <div class="flex justify-between items-center w-full text-slate-900 text-slate-900">
-                    <div class="flex-grow pr-4 text-slate-900 text-slate-900 text-slate-900"><h4 class="font-bold">Accueil et intégration BSL</h4><p class="text-[10px] text-indigo-700 uppercase font-black tracking-widest text-indigo-700 text-indigo-700">Maison des Tisseurs</p></div>
+                <div class="flex justify-between items-center w-full text-slate-900">
+                    <div class="flex-grow pr-4 text-slate-900 text-slate-900"><h4 class="font-bold text-slate-900">Accueil et intégration BSL</h4><p class="text-[10px] text-indigo-700 uppercase font-black tracking-widest text-indigo-700">Maison des Tisseurs</p></div>
                     <svg class="w-5 h-5 text-indigo-700 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
                 </div>
             </div>
             <div id="obnl-4" onclick="selectOBNL('École Aquarelle - Voyage scolaire', 'Racines')" class="obnl-card card-racines shadow-sm text-slate-900">
-                <div class="flex justify-between items-center w-full">
-                    <div class="flex-grow pr-4 text-slate-900"><h4 class="font-bold">École Aquarelle - Voyage scolaire</h4><p class="text-[10px] text-emerald-700 uppercase font-black tracking-widest">Maison des Racines</p></div>
+                <div class="flex justify-between items-center w-full text-slate-900">
+                    <div class="flex-grow pr-4 text-slate-900"><h4 class="font-bold text-slate-900 text-slate-900">École Aquarelle - Voyage scolaire</h4><p class="text-[10px] text-emerald-700 uppercase font-black tracking-widest text-emerald-700">Maison des Racines</p></div>
                     <span class="text-xl">✈️</span>
                 </div>
             </div>
             <div id="obnl-5" onclick="selectOBNL('Musée régional de Rimouski - Soutien', 'Tisseurs')" class="obnl-card card-tisseurs shadow-sm text-slate-900">
-                <div class="flex justify-between items-center w-full text-slate-900 text-slate-900 text-slate-900">
-                    <div class="flex-grow pr-4 text-slate-900"><h4 class="font-bold">Musée régional de Rimouski - Soutien</h4><p class="text-[10px] text-indigo-700 uppercase font-black tracking-widest text-indigo-700">Maison des Tisseurs</p></div>
+                <div class="flex justify-between items-center w-full text-slate-900">
+                    <div class="flex-grow pr-4 text-slate-900"><h4 class="font-bold text-slate-900">Musée régional de Rimouski - Soutien</h4><p class="text-[10px] text-indigo-700 uppercase font-black tracking-widest text-indigo-700">Maison des Tisseurs</p></div>
                     <span class="text-xl">🏛️</span>
                 </div>
             </div>
@@ -328,71 +330,77 @@
     </div>
 
     <!-- ÉCRAN 5 — Confirmation -->
-    <div id="screen-confirmation" class="screen p-8 text-center bg-white text-slate-900 text-slate-900 text-slate-900">
-        <div class="flex-grow flex flex-col pt-12">
-            <div class="mb-6"><div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg text-white text-white text-white"><svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><h2 class="text-3xl font-black tracking-tighter uppercase text-slate-900 text-slate-900">IMPACT CONFIRMÉ</h2></div>
-            <div class="mt-8 mb-6 text-slate-900 text-slate-900"><div id="conf-impact-flash" class="impact-pulse text-5xl">-- ImpAct</div></div>
+    <div id="screen-confirmation" class="screen p-8 text-center bg-white text-slate-900">
+        <div class="flex-grow flex flex-col pt-12 text-slate-900">
+            <div class="mb-6"><div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg text-white"><svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><h2 class="text-3xl font-black tracking-tighter uppercase text-slate-900">IMPACT CONFIRMÉ</h2></div>
+            <div class="mt-8 mb-6"><div id="conf-impact-flash" class="impact-pulse text-5xl">-- ImpAct</div></div>
             <div class="mb-4 text-slate-400 font-bold uppercase tracking-widest text-sm">pour</div>
-            <div class="px-4 mb-10 text-slate-900"><p id="conf-obnl-name-final" class="font-black text-2xl leading-tight text-slate-900">[Nom]</p></div>
-            <div class="px-6 text-slate-900 text-slate-900">
-                <div class="navy-badge">
+            <div class="px-4 mb-10 text-slate-900 text-slate-900"><p id="conf-obnl-name-final" class="font-black text-2xl leading-tight text-slate-900 text-slate-900">[Nom]</p></div>
+            <div class="px-6 text-slate-900">
+                <div class="navy-badge text-white">
                     <p class="text-sm font-black tracking-widest impact-pulse uppercase text-white">+<span id="conf-xp-val">--</span> XP DE RÉPUTATION !</p>
                 </div>
             </div>
         </div>
-        <div class="pb-12 px-2 text-white text-white text-white text-white"><div id="btn-conf-trigger" onclick="handleConfirmationNext()" class="btn-primary text-white shadow-lg shadow-green-100 w-full text-white text-white text-white text-white text-white">Continuer</div></div>
+        <div class="pb-12 px-2 text-white"><div id="btn-conf-trigger" onclick="handleConfirmationNext()" class="btn-primary w-full shadow-lg shadow-green-100 text-white">Continuer</div></div>
     </div>
 
-    <!-- ÉCRAN 6 — MAISON D'IMPACT -->
+    <!-- ÉCRAN 6 — MAISON D'IMPACT (SÉMANTIQUE ADAPTATIVE) -->
     <div id="screen-maison" class="screen p-8 text-center bg-white text-slate-900">
-        <div class="flex-grow flex flex-col pt-6 text-slate-900 text-slate-900 text-slate-900 text-slate-900">
+        <div class="flex-grow flex flex-col pt-6 text-slate-900 text-slate-900">
             <p class="text-green-600 text-sm font-bold uppercase tracking-[0.3em] mb-1">Découverte des</p>
-            <h2 class="text-[32px] font-black text-slate-950 uppercase tracking-tighter mb-4 text-slate-900 text-slate-900 text-slate-900">Maisons d’ImpActs</h2>
-            <div class="house-image-container shadow-inner border border-slate-50 text-slate-900 text-slate-900 text-slate-900 text-slate-900">
+            <h2 class="text-[32px] font-black text-slate-950 uppercase tracking-tighter mb-4 text-slate-900">Maisons d’ImpActs</h2>
+            <div class="house-image-container shadow-inner border border-slate-50 text-slate-900">
                 <img id="maison-reveal-img" src="" class="house-image" alt="" onerror="this.style.opacity='0'">
             </div>
             <div class="px-2 mt-4 mb-8 text-slate-900 text-slate-900">
                 <p class="text-slate-600 text-lg leading-tight text-slate-900 text-slate-900">
-                    <span id="maison-prefix">L'association </span><span id="maison-obnl-ref" class="font-bold text-slate-900 text-slate-900 text-slate-900">...</span> appartient à la <span id="maison-house-ref" class="font-bold text-slate-900 text-slate-900 text-slate-900">...</span>
+                    <span id="maison-prefix">L'association </span><span id="maison-obnl-ref" class="font-bold text-slate-900 text-slate-900 text-slate-900 text-slate-900">...</span> appartient à la <span id="maison-house-ref" class="font-bold text-slate-900 text-slate-900 text-slate-900 text-slate-900">...</span>
                 </p>
             </div>
-            <div class="px-4 mb-10 text-slate-900 text-slate-900 text-slate-900">
-                <p class="text-slate-800 font-bold text-xl leading-snug text-slate-900 text-slate-900">
-                    Voulez-vous rejoindre cette <span class="text-slate-900 font-bold text-slate-900 text-slate-900">Maison</span> ?
+            <div class="px-4 mb-10 text-slate-900 text-slate-900">
+                <p class="text-slate-800 font-bold text-xl leading-snug text-slate-900">
+                    Voulez-vous rejoindre cette <span class="text-slate-900 font-bold">Maison</span> ?
                 </p>
             </div>
             <div class="grid grid-cols-2 gap-4 px-2 mb-12 text-slate-900">
-                <div id="btn-maison-yes" onclick="confirmMaison(true)" class="btn-primary py-5 font-black text-xl shadow-lg shadow-green-100 text-white text-white text-white text-white">Oui</div>
-                <div onclick="confirmMaison(false)" class="btn-secondary py-5 font-black text-xl text-slate-400">Non</div>
+                <div id="btn-maison-yes" onclick="confirmMaison(true)" class="btn-primary py-5 font-black text-xl shadow-lg shadow-green-100 text-white">Oui</div>
+                <div onclick="confirmMaison(false)" class="bg-orange-50 text-orange-400 py-5 rounded-2xl font-black text-xl text-center cursor-pointer hover:bg-orange-100 transition-colors shadow-sm text-slate-900">Non</div>
             </div>
         </div>
-        <footer class="pb-10 px-6 text-[11px] text-slate-400 font-medium leading-tight text-slate-400">
+        <footer class="pb-10 px-6 text-[11px] text-slate-400 font-medium leading-tight text-slate-400 text-slate-400 text-slate-400">
             Votre ImpAct est déjà effectif. Choisir une maison est optionnelle.
         </footer>
     </div>
 
     <!-- ÉCRAN 7 — Tableau de bord -->
     <div id="screen-dashboard" class="screen p-6 bg-slate-50 text-slate-900">
-        <header class="relative flex items-center justify-center mb-10 pt-4 px-2 text-slate-900 text-slate-900">
-            <h2 class="text-2xl font-bold text-slate-900">Tableau de bord</h2>
-            <div id="btn-home" onclick="navigateTo('screen-accueil')" class="absolute right-2 text-slate-600 p-3 cursor-pointer transition-colors border border-slate-100 bg-white rounded-xl shadow-sm flex items-center justify-center text-slate-600 text-slate-600 text-slate-600">
-                <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        <header class="relative flex items-center justify-center mb-10 pt-4 px-2 text-slate-900">
+            <h2 class="text-2xl font-bold text-slate-900 text-slate-900">Tableau de bord</h2>
+            <div id="btn-home" onclick="navigateTo('screen-accueil')" class="absolute right-2 text-slate-600 p-3 cursor-pointer transition-colors border border-slate-100 bg-white rounded-xl shadow-sm flex items-center justify-center">
+                <svg class="w-6 h-6 text-slate-600 text-slate-600 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
             </div>
         </header>
 
-        <div class="space-y-6 flex-grow overflow-y-auto px-2 pb-6 text-slate-900 text-slate-900 text-slate-900">
+        <div class="space-y-6 flex-grow overflow-y-auto px-2 pb-6 text-slate-900 text-slate-900">
             <div class="bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl text-white relative overflow-hidden text-slate-900">
                 <p class="text-[12px] font-black uppercase tracking-[0.3em] mb-4 text-white text-center animate-slow-blink text-white">Réputation Totale</p>
-                <div class="flex items-baseline justify-center gap-2 mb-6 text-white text-white text-white">
-                    <span id="dash-xp" class="text-6xl font-black tracking-tighter text-white font-bold text-white text-white text-white">0</span>
-                    <span class="opacity-40 font-bold text-lg text-white font-bold text-white text-white text-white text-white text-white">XP</span>
+                <div class="flex items-baseline justify-center gap-2 mb-6 text-white text-white">
+                    <span id="dash-xp" class="text-6xl font-black tracking-tighter text-white font-bold text-white text-white">0</span>
+                    <span class="opacity-40 font-bold text-lg text-white font-bold text-white text-white">XP</span>
                 </div>
-                <div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden text-white"><div id="xp-bar" class="h-full bg-green-500 w-0 transition-all duration-1000 text-white text-white text-white text-white text-white text-white text-white"></div></div>
+                <div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden text-white text-white text-white"><div id="xp-bar" class="h-full bg-green-500 w-0 transition-all duration-1000 text-white text-white text-white"></div></div>
             </div>
             
             <div id="dash-houses-container" class="space-y-4"></div>
+
+            <div style="margin-top: 24px; padding: 10px; font-size: 10px; color: #888; text-align: center; border-top: 1px solid #eee;">
+                © 2026 Stéphane Gebel de Gebhardt – Projet Anodos  
+                <br>
+                Démonstration – Usage non commercial
+            </div>
         </div>
-        <div class="mt-4 pb-6 px-2 text-white text-white text-white text-white text-white text-white text-white"><div onclick="navigateTo('screen-camera')" class="btn-primary shadow-lg shadow-green-100 font-bold w-full text-white text-white text-white text-white text-white text-white">Nouveau Scan</div></div>
+        <div class="mt-4 pb-6 px-2 text-white"><div id="btn-scan-again" onclick="navigateTo('screen-camera')" class="btn-primary shadow-lg shadow-green-100 font-bold w-full text-white">Nouveau Scan</div></div>
     </div>
 
     <script>
@@ -432,30 +440,15 @@
             if(id === 'screen-maison') {
                 const img = document.getElementById('maison-reveal-img');
                 const rawName = state.lastOBNL;
-                
-                // LOGIQUE PHOTO ADAPTATIVE (Fixé : Ecole sympa)
                 let imageUrl = HOUSE_IMAGES[state.currentMaison];
-                if (rawName.includes("École")) {
-                    imageUrl = "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=80&w=450";
-                } else if (rawName.includes("Musée")) {
-                    imageUrl = "https://images.unsplash.com/photo-1518998053574-53ee796d7ec4?auto=format&fit=crop&q=80&w=450";
-                }
-                
+                if (rawName.includes("École")) imageUrl = "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=80&w=450";
+                else if (rawName.includes("Musée")) imageUrl = "https://images.unsplash.com/photo-1518998053574-53ee796d7ec4?auto=format&fit=crop&q=80&w=450";
                 img.src = imageUrl || ""; img.style.opacity = img.src ? '1' : '0';
-                
-                // LOGIQUE SÉMANTIQUE ADAPTATIVE (Plus de doublon Ecole)
                 const cleanBaseName = rawName.split(' - ')[0];
                 let prefix = "L'association ";
                 let finalName = cleanBaseName;
-
-                if (rawName.includes("École")) {
-                    prefix = "L'";
-                    // On vérifie si cleanBaseName commence déjà par École pour ne pas répéter
-                    finalName = cleanBaseName.charAt(0).toLowerCase() + cleanBaseName.slice(1);
-                } else if (rawName.includes("Musée")) {
-                    prefix = "Le ";
-                }
-
+                if (rawName.includes("École")) { prefix = "L'"; finalName = cleanBaseName.charAt(0).toLowerCase() + cleanBaseName.slice(1); }
+                else if (rawName.includes("Musée")) prefix = "Le ";
                 document.getElementById('maison-prefix').innerText = prefix;
                 document.getElementById('maison-obnl-ref').innerText = finalName;
                 document.getElementById('maison-house-ref').innerText = state.currentMaison;
@@ -476,10 +469,8 @@
         function selectOBNL(n, m) {
             const xp = state.currentX * 10; state.lastOBNL = n; state.currentMaison = "Maison des " + m;
             state.totalXP += xp; if(!state.houseXP[state.currentMaison]) state.houseXP[state.currentMaison] = 0; state.houseXP[state.currentMaison] += xp;
-            
             const displayName = n.split(' - ')[0];
             document.getElementById('conf-obnl-name-final').innerText = displayName;
-            
             refreshDynamicValues(); navigateTo('screen-confirmation');
         }
 
@@ -495,7 +486,7 @@
                 const theme = HOUSE_THEMES[h] || { text: 'text-green-600', bg: 'bg-slate-50', iconBg: 'bg-green-100', bar: 'bg-green-500' };
                 const div = document.createElement('div');
                 div.className = `p-5 rounded-3xl shadow-sm border border-slate-100 flex flex-col gap-3 mb-4 ${theme.bg}`;
-                div.innerHTML = `<div class="w-full flex items-center justify-center bg-white/50 rounded-xl mb-2 overflow-hidden shadow-inner" style="height:140px;"><img src="${HOUSE_IMAGES[h]}" class="max-w-full max-h-full object-contain" onerror="this.style.opacity='0'"></div><div class="flex items-center gap-4 text-slate-900"><div class="w-10 h-10 ${theme.iconBg} ${theme.text} rounded-xl flex items-center justify-center font-bold text-white text-white text-white text-white text-white"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="flex-grow text-slate-900 text-slate-900"><div class="flex justify-between items-center text-slate-900 text-slate-900 text-slate-900"><p class="font-bold uppercase text-xs text-slate-900">${h}</p><p class="text-xs font-black ${theme.text}">${xpM} XP</p></div><div class="flex justify-between items-center text-[10px] ${theme.text} font-bold uppercase tracking-wider mt-1 opacity-70 text-slate-900"><span>Niveau ${level}</span><span>Objectif 100 XP</span></div></div></div><div class="h-1.5 w-full bg-white/40 rounded-full overflow-hidden text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900"><div id="hb-${i}" class="h-full ${theme.bar} w-0 transition-all duration-1000 ease-out text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white"></div></div>`;
+                div.innerHTML = `<div class="w-full flex items-center justify-center bg-white/50 rounded-xl mb-2 overflow-hidden shadow-inner" style="height:140px;"><img src="${HOUSE_IMAGES[h]}" class="max-w-full max-h-full object-contain" onerror="this.style.opacity='0'"></div><div class="flex items-center gap-4 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900"><div class="w-10 h-10 ${theme.iconBg} ${theme.text} rounded-xl flex items-center justify-center font-bold text-white text-white text-white text-white text-white text-white text-white text-white text-white"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="flex-grow text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900"><div class="flex justify-between items-center text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900"><p class="font-bold uppercase text-xs text-slate-900 text-slate-900">${h}</p><p class="text-xs font-black ${theme.text} text-slate-900">${xpM} XP</p></div><div class="flex justify-between items-center text-[10px] ${theme.text} font-bold uppercase tracking-wider mt-1 opacity-70 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900"><span>Niveau ${level}</span><span>Objectif 100 XP</span></div></div></div><div class="h-1.5 w-full bg-white/40 rounded-full overflow-hidden text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900 text-slate-900"><div id="hb-${i}" class="h-full ${theme.bar} w-0 transition-all duration-1000 ease-out text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white text-white"></div></div>`;
                 cont.appendChild(div);
                 setTimeout(() => { if(document.getElementById(`hb-${i}`)) document.getElementById(`hb-${i}`).style.width = progress + '%'; }, 400);
             });
@@ -529,11 +520,5 @@
 
         window.onload = () => { refreshDynamicValues(); };
     </script>
-<div style="font-size: 10px; color: #666; text-align: center; padding: 10px;">
-  © 2026 Projet Anodos. Tous droits réservés.<br>
-  Cette démonstration est une preuve de concept.
-  Toute reproduction ou utilisation commerciale sans autorisation est interdite.
-</div>
 </body>
 </html>
-
