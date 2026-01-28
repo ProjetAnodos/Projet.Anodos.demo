@@ -118,17 +118,7 @@
             animation: scanMove 2.5s ease-in-out infinite alternate;
         }
 
-        .scan-trail {
-            position: absolute;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to top, rgba(0, 255, 65, 0.15), transparent);
-            top: -100px;
-            animation: scanMoveTrail 2.5s ease-in-out infinite alternate;
-        }
-
         @keyframes scanMove { 0% { top: 5%; } 100% { top: 95%; } }
-        @keyframes scanMoveTrail { 0% { transform: translateY(20px); } 100% { transform: translateY(260px); } }
 
         /* --- EFFETS VISUELS ET ANIMATIONS --- */
         .text-success-flash {
@@ -147,9 +137,9 @@
             color: #00ff41 !important; 
             text-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
             font-weight: 900 !important;
-            animation: impactPulseAnim 0.6s infinite alternate;
+            animation: pAnim 0.6s infinite alternate;
         }
-        @keyframes impactPulseAnim { from { transform: scale(1); } to { transform: scale(1.08); } }
+        @keyframes pAnim { from { transform: scale(1); } to { transform: scale(1.08); } }
 
         @keyframes slowBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         .animate-slow-blink { animation: slowBlink 3s ease-in-out infinite; }
@@ -223,6 +213,8 @@
     <div id="screen-accueil" class="screen active p-8 text-center text-slate-900">
         <div class="flex-grow flex flex-col justify-center">
             <div class="mb-10 text-slate-900">
+                <!-- AJOUT SYSTÈME ANDROMÈDE 2.0 -->
+                <p class="text-[10px] font-black text-green-600 uppercase tracking-[0.4em] mb-4">Système Andromède 2.0</p>
                 <div class="text-2xl font-black uppercase tracking-[0.3em] mb-1">Projet</div>
                 <h1 class="text-6xl font-black mb-4 tracking-tighter leading-none">ANODOS</h1>
                 <h2 class="text-xl font-semibold mb-6 text-slate-700 leading-tight">Transformez votre achat<br>en impact local.</h2>
@@ -248,14 +240,13 @@
         <p class="text-slate-500 mb-10 text-balance px-4 font-light leading-relaxed">Anodos a besoin d'accéder à votre caméra pour identifier le code QR sur le produit.</p>
         <div class="space-y-4 w-full px-4 text-white font-bold">
             <div id="btn-auth-trigger" onclick="navigateTo('screen-scanner')" class="btn-primary w-full shadow-lg shadow-green-100">AUTORISER</div>
-            <div onclick="navigateTo('screen-accueil')" class="bg-slate-100 text-slate-500 py-4 rounded-2xl font-bold uppercase tracking-widest text-xs cursor-pointer flex items-center justify-center text-slate-500">Plus tard</div>
+            <div onclick="navigateTo('screen-accueil')" class="bg-slate-100 text-slate-500 py-4 rounded-2xl font-bold uppercase tracking-widest text-xs cursor-pointer flex items-center justify-center">Plus tard</div>
         </div>
-        <footer class="text-[10px] text-slate-400 mt-12 italic text-center">Vous restez libre à chaque étape.</footer>
     </div>
 
     <!-- ÉCRAN 3 — SCANNER -->
     <div id="screen-scanner" class="screen bg-black text-white text-center">
-        <div class="scanner-container text-white">
+        <div class="scanner-container">
             <h3 class="absolute top-16 text-center w-full px-10 text-white text-xl font-bold">Scannez le produit</h3>
             <div class="scanner-viewfinder">
                 <div class="scanner-corner corner-tl"></div><div class="scanner-corner corner-tr"></div><div class="scanner-corner corner-bl"></div><div class="scanner-corner corner-br"></div>
@@ -272,7 +263,7 @@
         </div>
     </div>
 
-    <!-- ÉCRAN 4 — CHOIX DES 6 ASSOCIATIONS -->
+    <!-- ÉCRAN 4 — CHOIX -->
     <div id="screen-obnl" class="screen p-6 text-slate-900">
         <header class="mb-6 pt-4 text-center">
             <h2 class="text-[17px] font-bold leading-tight mb-2">Choisissez et réallouez</h2>
@@ -280,23 +271,23 @@
         </header>
 
         <div id="obnl-list" class="flex-grow overflow-y-auto space-y-3 pr-1 pb-4">
-            <div id="obnl-0" onclick="selectOBNL('Moisson Rimouski-Neigette', 'Racines')" class="obnl-card card-racines shadow-sm">
+            <div id="obnl-0" onclick="selectOBNL('Moisson Rimouski-Neigette', 'Racines')" class="obnl-card card-racines shadow-sm text-slate-900">
                 <div class="flex-grow"><div><h4 class="font-bold">Moisson Rimouski-Neigette</h4><p class="text-[10px] text-emerald-700 uppercase font-black tracking-widest">Maison des Racines</p></div></div><span>➔</span>
             </div>
             <div id="obnl-1" onclick="selectOBNL('Action climat Rimouski', 'Phénix')" class="obnl-card card-phenix shadow-sm text-slate-900">
                 <div class="flex-grow"><div><h4 class="font-bold">Action climat Rimouski</h4><p class="text-[10px] text-orange-600 uppercase font-black tracking-widest">Maison des Phénix</p></div></div><span>➔</span>
             </div>
-            <div id="obnl-2" onclick="selectOBNL('Centre des femmes de Rimouski', 'Gardiens')" class="obnl-card card-gardiens shadow-sm">
+            <div id="obnl-2" onclick="selectOBNL('Centre des femmes de Rimouski', 'Gardiens')" class="obnl-card card-gardiens shadow-sm text-slate-900">
                 <div class="flex-grow"><div><h4 class="font-bold">Centre des femmes de Rimouski</h4><p class="text-[10px] text-blue-600 uppercase font-black tracking-widest">Maison des Gardiens</p></div></div><span>➔</span>
             </div>
-            <div id="obnl-3" onclick="selectOBNL('Accueil et intégration BSL', 'Tisseurs')" class="obnl-card card-tisseurs shadow-sm">
-                <div class="flex-grow"><div><h4 class="font-bold">Accueil et intégration BSL</h4><p class="text-[10px] text-indigo-700 uppercase font-black tracking-widest text-indigo-700">Maison des Tisseurs</p></div></div><span>➔</span>
+            <div id="obnl-3" onclick="selectOBNL('Accueil et intégration BSL', 'Tisseurs')" class="obnl-card card-tisseurs shadow-sm text-slate-900">
+                <div class="flex-grow"><div><h4 class="font-bold text-slate-900 text-slate-900">Accueil et intégration BSL</h4><p class="text-[10px] text-indigo-700 uppercase font-black tracking-widest text-indigo-700">Maison des Tisseurs</p></div></div><span>➔</span>
             </div>
-            <div id="obnl-4" onclick="selectOBNL('École Aquarelle - Voyage scolaire', 'Racines')" class="obnl-card card-racines shadow-sm">
-                <div class="flex-grow"><div><h4 class="font-bold">École Aquarelle - Voyage scolaire</h4><p class="text-[10px] text-emerald-700 uppercase font-black tracking-widest text-emerald-700">Maison des Racines</p></div></div><span class="text-xl">✈️</span>
+            <div id="obnl-4" onclick="selectOBNL('École Aquarelle - Voyage scolaire', 'Racines')" class="obnl-card card-racines shadow-sm text-slate-900">
+                <div class="flex-grow text-slate-900"><div><h4 class="font-bold">École Aquarelle - Voyage scolaire</h4><p class="text-[10px] text-emerald-700 uppercase font-black tracking-widest text-emerald-700">Maison des Racines</p></div></div><span class="text-xl">✈️</span>
             </div>
             <div id="obnl-5" onclick="selectOBNL('Musée régional de Rimouski - Soutien', 'Tisseurs')" class="obnl-card card-tisseurs shadow-sm">
-                <div class="flex-grow"><div><h4 class="font-bold">Musée régional de Rimouski - Soutien</h4><p class="text-[10px] text-indigo-700 uppercase font-black tracking-widest text-indigo-700">Maison des Tisseurs</p></div></div><span class="text-xl">🏛️</span>
+                <div class="flex-grow text-slate-900"><div><h4 class="font-bold text-slate-900 text-slate-900">Musée régional de Rimouski - Soutien</h4><p class="text-[10px] text-indigo-700 uppercase font-black tracking-widest text-indigo-700">Maison des Tisseurs</p></div></div><span class="text-xl">🏛️</span>
             </div>
         </div>
 
@@ -307,86 +298,85 @@
         </div>
     </div>
 
-    <!-- ÉCRAN 5 — CONFIRMATION (HIÉRARCHIE SOUS-TITRE) -->
+    <!-- ÉCRAN 5 — CONFIRMATION -->
     <div id="screen-confirmation" class="screen p-8 text-center bg-white text-slate-900 justify-center items-center">
-        <div class="flex-grow flex flex-col justify-center items-center text-slate-900">
-            <div class="mb-4 flex flex-col items-center">
-                <div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mb-4 shadow-lg"><svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                <h2 class="text-3xl font-black uppercase">IMPACT CONFIRMÉ</h2>
+        <div class="flex-grow flex flex-col justify-center items-center">
+            <div class="mb-4 flex flex-col items-center text-slate-900 text-slate-900">
+                <div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mb-4 shadow-lg text-white"><svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                <h2 class="text-3xl font-black uppercase text-slate-900 text-slate-900">IMPACT CONFIRMÉ</h2>
             </div>
             
-            <div class="mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-100 w-full text-center">
-                <p class="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest text-slate-400">Marchand : <span id="conf-commerce" class="text-slate-900 font-black">--</span></p>
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-slate-400">Produit : <span id="conf-product" class="text-slate-700 italic font-bold">--</span></p>
+            <div class="mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-100 w-full text-center text-slate-900">
+                <p class="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">Marchand : <span id="conf-commerce" class="text-slate-900 font-black">--</span></p>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Produit : <span id="conf-product" class="text-slate-700 italic font-bold">--</span></p>
             </div>
 
-            <div class="mb-6 text-slate-900"><div id="conf-impact-flash" class="impact-pulse text-5xl">-- ImpAct</div></div>
+            <div class="mb-6 text-slate-900 text-slate-900"><div id="conf-impact-flash" class="impact-pulse text-5xl">-- ImpAct</div></div>
             <p class="mb-4 text-slate-400 font-bold uppercase text-xs text-slate-400">pour</p>
             
-            <!-- CONTENEUR POUR LE NOM ET LE SOUS-TITRE EN ITALIQUE -->
-            <div id="conf-obnl-name-final" class="font-black text-2xl leading-tight mb-8 text-slate-900">---</div>
+            <div id="conf-obnl-name-final" class="font-black text-2xl leading-tight mb-8 text-slate-900 text-slate-900 text-slate-900">---</div>
             
-            <div class="navy-badge text-white mt-8">
-                <p class="text-sm font-black tracking-widest impact-pulse uppercase">+<span id="conf-xp-val">--</span> XP DE RÉPUTATION !</p>
+            <div class="navy-badge text-white mt-8 text-white">
+                <p class="text-sm font-black tracking-widest impact-pulse uppercase text-white">+<span id="conf-xp-val">--</span> XP DE RÉPUTATION !</p>
             </div>
         </div>
         <div class="pb-12 px-2 text-white w-full"><div id="btn-conf-trigger" onclick="handleConfirmationNext()" class="btn-primary w-full shadow-lg shadow-green-100 text-white">Continuer</div></div>
     </div>
 
-    <!-- ÉCRAN 6 — MAISON D'IMPACT (SÉMANTIQUE ET PHOTOS MASTER) -->
+    <!-- ÉCRAN 6 — MAISON -->
     <div id="screen-maison" class="screen p-8 text-center bg-white text-slate-900">
         <div class="flex-grow flex flex-col pt-6 text-slate-900">
             <p class="text-green-600 text-sm font-bold uppercase tracking-[0.3em] mb-1">Découverte des</p>
-            <h2 class="text-[32px] font-black text-slate-950 uppercase tracking-tighter mb-4">Maisons d’ImpActs</h2>
-            <div class="house-image-container shadow-inner border border-slate-50"><img id="maison-reveal-img" src="" class="house-image" alt="" onerror="this.style.opacity='0'"></div>
-            <div class="px-2 mt-4 mb-8 text-slate-900"><p class="text-slate-600 text-lg leading-tight text-slate-900"><span id="maison-prefix">L'association </span><span id="maison-obnl-ref" class="font-bold text-slate-900">...</span> appartient à la <span id="maison-house-ref" class="font-bold text-slate-900 text-slate-900 text-slate-900">...</span></p></div>
-            <div class="px-4 mb-10 text-slate-900"><p class="text-slate-800 font-bold text-xl leading-snug">Voulez-vous rejoindre cette <span class="text-slate-900 font-bold">Maison</span> ?</p></div>
+            <h2 class="text-[32px] font-black text-slate-950 uppercase tracking-tighter mb-4 text-slate-900">Maisons d’ImpActs</h2>
+            <div class="house-image-container shadow-inner border border-slate-50 text-slate-900">
+                <img id="maison-reveal-img" src="" class="house-image" alt="" onerror="this.style.opacity='0'">
+            </div>
+            <div class="px-2 mt-4 mb-8 text-slate-900 text-slate-900"><p class="text-slate-600 text-lg leading-tight text-slate-900"><span id="maison-prefix text-slate-900">L'association </span><span id="maison-obnl-ref" class="font-bold text-slate-900">...</span> appartient à la <span id="maison-house-ref" class="font-bold text-slate-900 text-slate-900 text-slate-900">...</span></p></div>
+            <div class="px-4 mb-10 text-slate-900"><p class="text-slate-800 font-bold text-xl leading-snug text-slate-900 text-slate-900">Voulez-vous rejoindre cette <span class="text-slate-900 font-bold">Maison</span> ?</p></div>
             <div class="grid grid-cols-2 gap-4 px-2 mb-12">
                 <div id="btn-maison-yes" onclick="confirmMaison(true)" class="btn-primary py-5 font-black text-xl shadow-lg shadow-green-100 text-white">Oui</div>
-                <div onclick="confirmMaison(false)" class="bg-orange-50 text-orange-400 py-5 rounded-2xl font-black text-xl text-center cursor-pointer hover:bg-orange-100 transition-colors shadow-sm flex items-center justify-center">Non</div>
+                <div onclick="confirmMaison(false)" class="bg-orange-50 text-orange-400 py-5 rounded-2xl font-black text-xl text-center cursor-pointer hover:bg-orange-100 transition-colors shadow-sm flex items-center justify-center text-slate-900">Non</div>
             </div>
         </div>
         <footer class="pb-10 px-6 text-[11px] text-slate-400 font-medium leading-tight text-center text-slate-400">Votre ImpAct est déjà effectif. Choisir une maison est <span class="font-bold text-slate-500">optionnel</span>.</footer>
     </div>
 
-    <!-- ÉCRAN 7 — TABLEAU DE BORD (MASTER) -->
+    <!-- ÉCRAN 7 — DASHBOARD -->
     <div id="screen-dashboard" class="screen p-6 bg-slate-50 text-slate-900">
-        <header class="relative flex items-center justify-center mb-10 pt-4 px-2 text-slate-900 text-slate-900">
-            <h2 class="text-2xl font-bold">Tableau de bord</h2>
-            <div id="btn-home" onclick="navigateTo('screen-accueil')" class="absolute right-2 text-slate-600 p-3 cursor-pointer transition-colors border border-slate-100 bg-white rounded-xl shadow-sm flex items-center justify-center">
+        <header class="relative flex items-center justify-center mb-10 pt-4 px-2 text-slate-900">
+            <h2 class="text-2xl font-bold text-slate-900">Tableau de bord</h2>
+            <div id="btn-home" onclick="navigateTo('screen-accueil')" class="absolute right-2 text-slate-600 p-3 cursor-pointer transition-colors border border-slate-100 bg-white rounded-xl shadow-sm flex items-center justify-center text-slate-600 text-slate-600 text-slate-600">
                 <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
             </div>
         </header>
 
         <div class="space-y-6 flex-grow overflow-y-auto px-2 pb-6 text-slate-900">
-            <div class="bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl text-white relative overflow-hidden text-center text-white">
+            <div class="bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl text-white relative overflow-hidden text-center text-white text-white">
                 <p class="text-[12px] font-black uppercase tracking-[0.3em] mb-4 text-white animate-slow-blink text-white">Réputation citoyenne</p>
-                <div class="flex items-baseline justify-center gap-2 mb-4 text-white text-white"><span id="dash-xp" class="text-6xl font-black tracking-tighter">0</span><span class="opacity-40 font-bold text-lg uppercase">XP</span></div>
-                <div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden text-white"><div id="xp-bar" class="h-full bg-green-500 w-0 transition-all duration-1000"></div></div>
-                <div class="pt-4 border-t border-white/10 inline-flex items-center gap-2 w-full justify-center text-white text-white text-white"><p class="text-[10px] font-bold uppercase text-white/40 tracking-widest">Total d'ImpAct réalloué : </p><p class="text-sm font-black text-green-400"><span id="dash-impact-total">0</span> point<span id="dash-impact-plural"></span></p></div>
+                <div class="flex items-baseline justify-center gap-2 mb-4 text-white text-white"><span id="dash-xp" class="text-6xl font-black tracking-tighter text-white">0</span><span class="opacity-40 font-bold text-lg uppercase text-white">XP</span></div>
+                <div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden text-white"><div id="xp-bar" class="h-full bg-green-500 w-0 transition-all duration-1000 text-white text-white"></div></div>
+                <div class="pt-4 border-t border-white/10 inline-flex items-center gap-2 w-full justify-center text-white text-white text-white"><p class="text-[10px] font-bold uppercase text-white/40 tracking-widest text-white">Total d'ImpAct réalloué : </p><p class="text-sm font-black text-green-400 text-green-400"><span id="dash-impact-total">0</span> point<span id="dash-impact-plural"></span></p></div>
             </div>
             
-            <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 text-left text-slate-900 text-slate-900"><p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-4 text-slate-400">Dernière activité locale</p>
-                <div class="flex flex-col gap-2 text-slate-900 text-slate-900">
-                    <div class="flex justify-between items-center text-slate-900">
-                        <span id="dash-last-commerce" class="font-bold text-slate-900 text-lg">---</span>
-                        <span id="dash-last-impact-badge" class="bg-green-100 text-green-700 text-[10px] font-black px-2 py-1 rounded">0 pt</span>
-                    </div>
-                    <p id="dash-last-product" class="text-sm text-slate-500 italic font-light text-slate-400 text-slate-400">Scannez un produit</p>
-                </div>
+            <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 text-left text-slate-900 text-slate-900 text-slate-900"><p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-4 text-slate-400">Dernière activité locale</p>
+                <div class="flex flex-col gap-2 text-slate-900"><div class="flex justify-between items-center text-slate-900 text-slate-900"><span id="dash-last-commerce" class="font-bold text-slate-900 text-lg">---</span><span id="dash-last-impact-badge" class="bg-green-100 text-green-700 text-[10px] font-black px-2 py-1 rounded">0 pt</span></div><p id="dash-last-product" class="text-sm text-slate-500 italic text-slate-500 text-slate-500">Scannez un produit</p></div>
             </div>
-            <div id="dash-houses-container" class="space-y-4"></div>
+            <div id="dash-houses-container" class="space-y-4 text-slate-900 text-slate-900 text-slate-900"></div>
             
-            <div style="margin-top: 24px; padding: 10px; font-size: 10px; color: #888; text-align: center; border-top: 1px solid #eee;">© 2026 Stéphane Gebel de Gebhardt – Projet Anodos<br>Démonstration – Usage non commercial</div>
+            <!-- COPYRIGHT AVEC VERSION 2.0 -->
+            <div style="margin-top: 24px; padding: 10px; font-size: 10px; color: #888; text-align: center; border-top: 1px solid #eee;">
+                © 2026 Stéphane Gebel de Gebhardt – Système Andromède 2.0  
+                <br>
+                Démonstration – Usage non commercial
+            </div>
         </div>
-        <div class="mt-4 pb-6 px-2 text-white"><div onclick="navigateTo('screen-camera')" class="btn-primary shadow-lg shadow-green-100 font-bold w-full text-white text-white">Nouveau Scan</div></div>
+        <div class="mt-4 pb-6 px-2 text-white"><div id="btn-scan-again" onclick="navigateTo('screen-camera')" class="btn-primary shadow-lg shadow-green-100 font-bold w-full text-white text-white">Nouveau Scan</div></div>
     </div>
 
     <script>
-        // CONFIGURATION ÉCOSYSTÈME
-        const COMMERCES = ["Boulangerie du Littoral", "Café l'Arpenteur", "Ma Cabane en Gaspésie", "Marché du Monde Rimouski", "Épicerie la Coulée"];
-        const PRODUITS = ["Pain artisanal bio", "Café équitable torréfié", "Sirop d'érable pur", "Pommes locales du verger", "Fromage de chèvre régional", "Savon au cèdre"];
-        const HOUSE_IMAGES = { 'Maison des Racines': 'https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?auto=format&fit=crop&q=80&w=450', 'Maison des Phénix': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=450', 'Maison des Gardiens': 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&q=80&w=450', 'Maison des Tisseurs': 'Maison des Tisseurs SYMBOLIQUE.png' };
+        const COMMERCES = ["Boulangerie du Littoral", "Café l'Arpenteur", "Ma Cabane en Gaspésie", "Marché du Monde", "Épicerie la Coulée"];
+        const PRODUITS = ["Pain artisanal bio", "Café équitable torréfié", "Sirop d'érable pur", "Pommes locales", "Fromage de chèvre", "Savon au cèdre"];
+        const HOUSE_IMAGES = { 'Maison des Racines': 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=400', 'Maison des Phénix': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=450', 'Maison des Gardiens': 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&q=80&w=400', 'Maison des Tisseurs': 'Maison des Tisseurs SYMBOLIQUE.png' };
         const HOUSE_THEMES = { 'Maison des Racines': { text: 'text-emerald-700', bg: 'bg-emerald-50', iconBg: 'bg-emerald-100', bar: 'bg-emerald-500' }, 'Maison des Phénix': { text: 'text-orange-600', bg: 'bg-orange-50', iconBg: 'bg-orange-100', bar: 'bg-orange-500' }, 'Maison des Gardiens': { text: 'text-blue-600', bg: 'bg-blue-50', iconBg: 'bg-blue-100', bar: 'bg-blue-500' }, 'Maison des Tisseurs': { text: 'text-indigo-800', bg: 'bg-indigo-50', iconBg: 'bg-indigo-100', bar: 'bg-indigo-700' } };
         
         let state = { totalXP: 0, totalImpact: 0, currentX: 0, lastOBNL: "", currentMaison: "", joinedHouses: [], houseXP: {}, isScanning: false, isDemoRunning: false, lastCommerce: "", lastProduct: "" };
@@ -404,17 +394,14 @@
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             const target = document.getElementById(id); if(target) target.classList.add('active');
             const ab = document.getElementById('autoplay-btn'); if(ab) ab.style.display = (id === 'screen-accueil' && !state.isDemoRunning) ? 'block' : 'none';
-            if(id === 'screen-scanner') {
-                const s = document.getElementById('scan-status'); s.innerText = "Placez le code QR dans le cadre";
-                s.classList.remove('text-success-flash'); state.isScanning = false;
-            }
+            if(id === 'screen-scanner') { const s = document.getElementById('scan-status'); s.innerText = "Placez le code QR dans le cadre"; s.classList.remove('text-success-flash'); state.isScanning = false; }
             if(id === 'screen-maison') {
                 const img = document.getElementById('maison-reveal-img'); const raw = state.lastOBNL;
                 let url = (raw.includes("École")) ? "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=80&w=450" : (raw.includes("Musée")) ? "https://images.unsplash.com/photo-1518998053574-53ee796d7ec4?auto=format&fit=crop&q=80&w=450" : HOUSE_IMAGES[state.currentMaison];
                 img.src = url || ""; img.style.opacity = url ? '1' : '0';
                 const name = raw.split(' - ')[0]; let pre = "L'association "; let fin = name;
                 if (raw.includes("École")) { pre = "L'"; fin = name.charAt(0).toLowerCase() + name.slice(1); } else if (raw.includes("Musée")) pre = "Le ";
-                document.getElementById('maison-prefix').innerText = pre; document.getElementById('maison-obnl-ref').innerText = fin;
+                document.getElementById('maison-obnl-ref').innerText = fin;
                 document.getElementById('maison-house-ref').innerText = state.currentMaison;
             }
             if(id === 'screen-dashboard') renderDash();
@@ -436,16 +423,12 @@
             state.totalXP += xpG; state.totalImpact += state.currentX;
             if(!state.houseXP[state.currentMaison]) state.houseXP[state.currentMaison] = 0; state.houseXP[state.currentMaison] += xpG;
             
-            // --- LOGIQUE DE FORMATAGE ÉCRAN 5 (MISE À JOUR HIÉRARCHIE) ---
             const nameEl = document.getElementById('conf-obnl-name-final');
             if (n.includes(' - ')) {
                 const parts = n.split(' - ');
-                // On passe la deuxième partie en minuscule, italique et plus petite
-                const subTitle = parts[1].toLowerCase();
-                nameEl.innerHTML = `<div class="mb-1">${parts[0]}</div><div class="text-lg font-medium italic text-slate-500">${subTitle}</div>`;
-            } else {
-                nameEl.innerText = n;
-            }
+                const mission = parts[1].toLowerCase();
+                nameEl.innerHTML = `<div class="mb-1">${parts[0]}</div><div class="text-lg font-medium italic text-slate-500">${mission}</div>`;
+            } else { nameEl.innerText = n; }
 
             refreshDynamicValues(); navigateTo('screen-confirmation');
         }
@@ -467,7 +450,7 @@
                 const xpM = state.houseXP[h] || 0; const lvl = Math.floor(xpM / 100) + 1; const prog = xpM % 100;
                 const theme = HOUSE_THEMES[h] || HOUSE_THEMES['Maison des Racines'];
                 const div = document.createElement('div'); div.className = "bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex flex-col gap-3 mb-4 text-left " + theme.bg;
-                div.innerHTML = `<div class="w-full flex items-center justify-center bg-white/50 rounded-xl mb-3 overflow-hidden shadow-inner" style="height:140px;"><img src="${HOUSE_IMAGES[h] || ''}" class="max-w-full max-h-full object-contain"></div><div class="flex items-center gap-4 text-slate-900"><div class="w-10 h-10 ${theme.iconBg} ${theme.text} rounded-xl flex items-center justify-center font-bold text-white"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="flex-grow text-slate-900"><div class="flex justify-between items-center text-slate-900"><p class="font-bold uppercase text-xs text-slate-900">${h}</p><p class="text-xs font-black ${theme.text}">${xpM} XP</p></div><div class="flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase mt-1"><span>Niveau ${lvl}</span><span>Objectif 100 XP</span></div></div></div><div class="h-1.5 w-full bg-slate-100 rounded-full mt-1 overflow-hidden"><div id="hb-${i}" class="h-full ${theme.bar} w-0 transition-all duration-1000"></div></div>`;
+                div.innerHTML = `<div class="w-full flex items-center justify-center bg-white/50 rounded-xl mb-3 overflow-hidden shadow-inner" style="height:140px;"><img src="${HOUSE_IMAGES[h] || ''}" class="max-w-full max-h-full object-contain"></div><div class="flex items-center gap-4 text-slate-900"><div class="w-10 h-10 ${theme.iconBg} ${theme.text} rounded-xl flex items-center justify-center font-bold text-white"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="flex-grow text-slate-900"><div class="flex justify-between items-center text-slate-900"><p class="font-bold uppercase text-xs">${h}</p><p class="text-xs font-black ${theme.text}">${xpM} XP</p></div><div class="flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase mt-1"><span>Niveau ${lvl}</span><span>Objectif 100 XP</span></div></div></div><div class="h-1.5 w-full bg-slate-100 rounded-full mt-2 overflow-hidden"><div id="hb-${i}" class="h-full ${theme.bar} w-0 transition-all duration-1000"></div></div>`;
                 cont.appendChild(div);
                 setTimeout(() => { if(document.getElementById(`hb-${i}`)) document.getElementById(`hb-${i}`).style.width = prog + '%'; }, 400);
             });
